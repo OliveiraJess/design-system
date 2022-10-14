@@ -20,9 +20,10 @@ jobs:
           node-version: 18.10.0
 
       - name: Install dependencies
-        run: npm ci --legacy-peer-deps
-        env:
-          NODE_OPTIONS=--openssl-legacy-provider
+        run: npm ci --openssl-legacy-provider
+        # --legacy-peer-deps
+        # env:
+        #   NODE_OPTIONS=--openssl-legacy-provider
 
       - name: Build Storybook
         run: npm run build-storybook
