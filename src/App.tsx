@@ -48,9 +48,16 @@ function App() {
         </label>
 
         <Button type='submit' className='mt-4' >Entrar na plataforma</Button>
-
       </form>
 
+      <footer className='flex flex-col items-center gap-4 mt-8'>
+        <Text size='sm' asChild>
+          <a href="" className='text-gray-400 underline hover:text-gray-200 '>Esqueceu sua senha?</a>
+        </Text>
+        <Text size='sm' asChild>
+          <a href="" className='text-gray-400 underline hover:text-gray-200 '>Não possui conta? Crie uma agora!</a>
+        </Text>
+      </footer>
 
     </div>
   )
