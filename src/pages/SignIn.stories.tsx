@@ -1,6 +1,7 @@
 import { Meta, StoryObj } from '@storybook/react';
 import { SignIn } from "./SignIn";
 import { within, userEvent, waitFor } from '@storybook/testing-library';
+import { rest } from 'msw';
 import { expect } from '@storybook/jest';
 
 export default {
@@ -8,11 +9,22 @@ export default {
   component: SignIn,
   args: {},
   argTypes: {},
+  parameters: {
+    msw: {
+      handlers: [
+        rest.post('/sessions', (req, res, ctx) => {
+          return res(ctx.json({
+            message: 'Login realizado!'
+          }))
+        })
+      ]
+    },
+  }
 } as Meta
 
 
 export const Default: StoryObj = {
-  play: async ({canvasElement}) => {
+  play: async ({ canvasElement }) => {
     const canvas = within(canvasElement);
 
     userEvent.type(canvas.getByPlaceholderText('example@example.com'), 'jess.deoliveira97@gmail.com');
